@@ -1,0 +1,17 @@
+version: '2'
+
+services:
+
+# The front end is copied to the nginx
+  nginx_gustavo1:
+    container_name: gustavo1
+    image: nginx
+    build:
+      context: ../report/
+      dockerfile: Dockerfile
+    volumes:
+      - ../report/dist/:/usr/share/nginx/html/
+    tty: true
+    ports:
+      - "6081:80"
+      - "6082:443"
