@@ -12,7 +12,7 @@
 <div class="col-md-12">
     <div class="box box-solid box-primary">
         <div class="box-header text-center">
-            <!-- <h2>MetaStorm</h2> -->
+            <h2>MetaStorm</h2>
         </div>
         <div class="box-body">
             <!--Metastorm  -->
@@ -89,6 +89,135 @@
                 </div>
             </div>
 
+        </div>
+    </div>
+</div>
+
+
+
+<div class="col-md-12">
+    <div class="box box-solid box-warning">
+        <div class="box-header text-center">
+            <h2>ARG - Nanopore</h2>
+        </div>
+        <div class="box-body">
+            <div class="col-md-5">
+                <object id="page1" type="image/svg+xml" data="assets/nanopore/fig1.svg"></object>
+            </div>
+            <div class="col-md-7">
+                <div class="box box-solid">
+                    <div class="box-body">
+                        <h4>
+                            <ul>
+                                <li>
+                                    <strong>Develop</strong> a web platform for the analysis of antibiotic resistance genes obtained from metagenomics samples (100%).
+                                    <ul>
+                                        <li>Environmental metagenomes don't have enough deep coverage (read correction). Therefore, we need to use a method to identify potental ARGs with low percentage of identity.</li>
+                                        <li>Annotation is done using Hidden Markov Models (resfams database) <span class="label bg-red">too slow!</span>.</li>
+                                        <li>Alternatives: annotation using the <strong>deepARG-LS</strong> model.</li>
+                                    </ul>
+                                </li>
+                                <li>
+                                    <strong>Integrate:</strong>
+                                    <ul>
+                                        <li>Identify metal and biocides resistance genes.</li>
+                                        <li>Determine if reads have evidence to being present in: Integrons, Plasmids, Transposons, Viruses.</li>
+                                        <li>Determine the structure of the long reads e.g., co-occurrence of genes. It can help to the discovery of novel ARG arrangements.</li>
+                                    </ul>
+                                </li>
+
+                                <li>
+                                    Web platform is developed using good software engineering practices (design patterns) which makes it modular (plug/unplug new features).
+                                </li>
+
+                            </ul>
+                        </h4>
+                    </div>
+                    <object id="page1" type="image/svg+xml" data="assets/nanopore/fig2.svg"></object>
+                    <object id="page1" type="image/svg+xml" data="assets/nanopore/fig3.svg"></object>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="col-md-12">
+    <div class="box box-solid box-primary">
+        <div class="box-header text-center">
+            <h2>ARGFast</h2>
+        </div>
+        <div class="box-body">
+            <div class="col-md-6">
+                <h4>
+                    <ul>
+                        <li>
+                            We have observed several studies where the sequence alignments are done by looking at <strong>high identity cutoffs</strong> (identity>80%-90%) and coverage (~25aa 75nt 75%). These studies focus the analysis on the quantification
+                            of known ARGs rather than in the detection or identification of novel ARGs.
+                        </li>
+                        <li>
+                            Sequence alignment is a <strong>costly process</strong> (global or local - dynamic programing) O(mn). If there are two sequences of the same length, the processing time is quadratic!
+                        </li>
+                        <li>
+                            Short sequence reads have a small sequencing error rate of around 0.1%.
+                        </li>
+                        <li>
+                            We developed an alignment free method for DNA to Nucleotide sequences comparison by using:
+                            <ul>
+                                <li>
+                                    Natual Language Processing Techniques <span class="badge bg-blue">Facebook</span>.
+                                </li>
+                                <li>
+                                    Fast hashing strategies <span class="badge bg-red">Google</span>.
+                                </li>
+                                <li>
+                                    Fast amino acid/nucleotide sequence manipulation <span class="badge bg-green">SeqAnn</span>.
+                                </li>
+                                <li>
+                                    Reduced amino acid alphabet.
+                                </li>
+                            </ul>
+                        </li>
+                        <li>
+                            Predict the label of short sequence reads by looking at the kmers distribution by projecting the kmer space into a smaller set (neural network - embedings). For example: Antibiotic resistance categories.
+                        </li>
+                        <li>
+                            Sequence comparison is made at the <strong>protein</strong> (not nucleotide) level. This implies that the algorithm transforms the nucleotide sequence into an amino acid sequence. Pretty much what <strong>BlastX</strong> does.
+                            Nucleotide homology is only detectable at high sequence similarity.
+                        </li>
+                        <li>
+                            Developed in <strong>C++</strong> and <span class="badge bg-blue">open source</span>. But, not released yet!
+                        </li>
+                    </ul>
+                    <hr>
+                    <strong>Preliminary data analysis - dataset:</strong>
+                    <hr>
+                    <p>Full dataset: 2,060,064</p>
+                    <p>Positive: 1,568,950</p>
+                    <p>Negative: 491,114</p>
+                    <hr>
+                    <div class="col-md-6">
+                        <strong>Diamond (best hit) prediction</strong>
+                        <hr>
+                        <p>ARG-like sequences: 1,169,375 (74%)</p>
+                        <p>False positives: 3078</p>
+                        <p>Precision: 0.99</p>
+                        <p>Recall: 1.00</p>
+                        <strong><p>Time: 8min 38sec</p></strong>
+                    </div>
+                    <div class="col-md-6">
+                        <strong>ARG-fast prediction</strong>
+                        <hr>
+                        <p>ARG-like sequences: 1,095,033 (70%)</p>
+                        <p>False positives: 4642</p>
+                        <p>Precision: 0.98</p>
+                        <p>Recall: 0.98</p>
+                        <strong><p>Time: 15 sec</p></strong>
+                    </div>
+                </h4>
+            </div>
+            <div class="col-md-6">
+                <object id="page1" type="image/svg+xml" data="assets/predx/img1.svg"></object>
+            </div>
         </div>
     </div>
 </div>
